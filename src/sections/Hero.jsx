@@ -1,4 +1,6 @@
-// Commit 3 - Add CTA buttons with smooth scroll
+// Commit 4 - Add profile image section
+import profile from "../assets/me.png";
+
 export default function Hero() {
 
   const scrollToContact = () => {
@@ -14,31 +16,18 @@ export default function Hero() {
 
         <div>
           <h1 className="text-6xl font-serif leading-tight">
-            I build <span className="text-purple-500">resilient</span><br />
-            software.
+            I build resilient software.
           </h1>
+        </div>
 
-          <p className="mt-6 text-gray-400 max-w-md">
-            Software Engineering undergraduate.
-          </p>
+        <div className="relative">
+          <img
+            src={profile}
+            alt="profile"
+            className="w-80 h-105 object-cover grayscale rounded-xl border border-gray-800"
+          />
 
-          <div className="mt-8 flex gap-6 items-center">
-
-            <a
-              href="#work"
-              className="bg-white text-black px-6 py-2 text-sm tracking-widest"
-            >
-              SEE MY WORK →
-            </a>
-
-            <button
-              onClick={scrollToContact}
-              className="text-sm tracking-widest text-gray-400"
-            >
-              GET IN TOUCH
-            </button>
-
-          </div>
+          <div className="absolute inset-0 rounded-xl border border-purple-500 opacity-20"></div>
         </div>
 
       </div>
