@@ -1,4 +1,4 @@
-// Commit 4 - Add animated education timeline
+// Commit 5 - Add certification list component
 import { motion } from "framer-motion";
 
 export default function Education() {
@@ -25,22 +25,39 @@ export default function Education() {
           transition={{ duration: 0.6 }}
           className="border border-gray-700 rounded-xl p-10 bg-[#120a1c]"
         >
-          <p className="text-xs text-gray-400 tracking-widest">
-            2023 — PRESENT
-          </p>
-
-          <h2 className="text-3xl font-serif mt-4">
+          <h2 className="text-3xl font-serif">
             Sabaragamuwa University
           </h2>
-
-          <p className="text-gray-400 mt-2">
-            BSc (Hons) in Software Engineering
-          </p>
         </motion.div>
 
-        <div></div>
+        <div className="space-y-8">
+          <CertItem
+            title="AWS Certified Cloud Practitioner"
+            org="Amazon Web Services"
+            year="2024"
+          />
+
+          <CertItem
+            title="Meta Front-End Developer"
+            org="Coursera"
+            year="2023"
+          />
+        </div>
 
       </div>
     </section>
+  );
+}
+
+function CertItem({ title, org, year }) {
+  return (
+    <div className="border-b border-gray-800 pb-6 flex justify-between">
+      <div>
+        <p>{title}</p>
+        <p className="text-xs text-gray-500">{org}</p>
+      </div>
+
+      <span className="text-sm text-gray-500">{year}</span>
+    </div>
   );
 }
