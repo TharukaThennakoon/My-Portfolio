@@ -1,4 +1,4 @@
-// Commit 2 - Add education section header
+// Commit 3 - Add responsive two-column layout
 export default function Education() {
   return (
     <section id="education" className="px-20 py-32 bg-[#0b0613] text-white">
@@ -10,9 +10,12 @@ export default function Education() {
 
         <h2 className="text-6xl md:text-7xl font-serif leading-tight">
           Still in school.
-          <br />
-          <span className="italic text-gray-300">Always in school.</span>
         </h2>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-16">
+        <div>Education Timeline</div>
+        <div>Certifications</div>
       </div>
 
     </section>
