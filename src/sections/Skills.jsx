@@ -1,4 +1,6 @@
-// Commit 4 - Add reusable SkillColumn component
+// Commit 5 - Add Framer Motion animations
+import { motion } from "framer-motion";
+
 export default function Skills() {
   return (
     <section id="skills" className="bg-[#f5f5f7] text-black px-20 py-32">
@@ -17,17 +19,17 @@ export default function Skills() {
 
         <SkillColumn
           title="LANGUAGES"
-          items={["Java", "Python", "SQL"]}
+          items={["Java", "Python", "TypeScript"]}
         />
 
         <SkillColumn
           title="FRAMEWORKS"
-          items={["React", "Node.js"]}
+          items={["React", "Next.js", "Node.js"]}
         />
 
         <SkillColumn
           title="TOOLS"
-          items={["Git", "Docker"]}
+          items={["Git", "Docker", "AWS"]}
         />
 
       </div>
@@ -38,7 +40,11 @@ export default function Skills() {
 
 function SkillColumn({ title, items }) {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <h3 className="text-xs tracking-widest text-gray-500 mb-6">
         {title}
       </h3>
@@ -50,6 +56,6 @@ function SkillColumn({ title, items }) {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
