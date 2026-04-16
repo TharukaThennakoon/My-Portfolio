@@ -1,4 +1,4 @@
-// Commit 3 - Add responsive skills grid
+// Commit 4 - Add reusable SkillColumn component
 export default function Skills() {
   return (
     <section id="skills" className="bg-[#f5f5f7] text-black px-20 py-32">
@@ -14,11 +14,42 @@ export default function Skills() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 border-t border-gray-300 pt-10">
-        <div>Languages</div>
-        <div>Frameworks</div>
-        <div>Tools</div>
+
+        <SkillColumn
+          title="LANGUAGES"
+          items={["Java", "Python", "SQL"]}
+        />
+
+        <SkillColumn
+          title="FRAMEWORKS"
+          items={["React", "Node.js"]}
+        />
+
+        <SkillColumn
+          title="TOOLS"
+          items={["Git", "Docker"]}
+        />
+
       </div>
 
     </section>
+  );
+}
+
+function SkillColumn({ title, items }) {
+  return (
+    <div>
+      <h3 className="text-xs tracking-widest text-gray-500 mb-6">
+        {title}
+      </h3>
+
+      <div className="space-y-6">
+        {items.map((item, index) => (
+          <div key={index}>
+            <span className="text-xl font-serif">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
