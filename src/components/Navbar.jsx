@@ -1,6 +1,8 @@
+
 export default function Navbar() {
   return (
     <div className="fixed top-0 w-full z-50 bg-[#0b0b0f] border-b border-gray-800">
+
       <div className="flex items-center justify-between px-10 py-4">
 
         <div className="text-sm tracking-widest">
@@ -22,6 +24,13 @@ export default function Navbar() {
         </div>
 
       </div>
+
+      <div className="flex justify-between px-10 py-3 text-xs tracking-widest text-gray-500 border-t border-gray-800">
+        <div>
+          PORTFOLIO / 2026 — EDITION 01
+        </div>
+      </div>
+
     </div>
   );
 }
