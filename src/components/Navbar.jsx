@@ -1,8 +1,7 @@
-
 export default function Navbar() {
   return (
     <div className="fixed top-0 w-full z-50 bg-[#0b0b0f] border-b border-gray-800">
-
+      
       <div className="flex items-center justify-between px-10 py-4">
 
         <div className="text-sm tracking-widest">
@@ -22,13 +21,18 @@ export default function Navbar() {
           <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
           AVAILABLE FOR INTERNSHIPS
         </div>
-
       </div>
 
       <div className="flex justify-between px-10 py-3 text-xs tracking-widest text-gray-500 border-t border-gray-800">
+
         <div>
           PORTFOLIO / 2026 — EDITION 01
         </div>
+
+        <div className="hidden md:block">
+          N 1°17′ E 103°50′ — Colombo
+        </div>
+
       </div>
 
     </div>
