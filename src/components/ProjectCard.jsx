@@ -1,4 +1,3 @@
-
 export default function ProjectCard({ project, index }) {
   return (
     <div className="relative bg-[#16121f] border border-purple-900/40 rounded-2xl p-10">
@@ -18,7 +17,15 @@ export default function ProjectCard({ project, index }) {
           </p>
         </div>
 
+        <div className="max-w-sm border-l border-purple-500 pl-6 text-gray-300 italic hidden md:block">
+          “{project.lesson}”
+        </div>
+
       </div>
+
+      <p className="text-gray-300 mt-6 max-w-xl leading-relaxed">
+        {project.description}
+      </p>
     </div>
   );
 }
