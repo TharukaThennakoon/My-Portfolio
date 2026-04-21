@@ -94,3 +94,23 @@ export default function Contact() {
   );
 }
 
+function ContactItem({ index, label, value, link }) {
+  return (
+    <div className="border-t border-gray-300 pt-6 flex justify-between items-center group">
+
+      <div className="flex items-center gap-4 text-xs tracking-widest text-gray-500">
+        <span>{index}</span>
+        <span>{label}</span>
+      </div>
+
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-2xl font-serif flex items-center gap-2 transition group-hover:text-purple-500 group-hover:translate-x-1"
+      >
+        {value} <span>↗</span>
+      </a>
+    </div>
+  );
+}
