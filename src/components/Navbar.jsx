@@ -8,6 +8,14 @@ export default function Navbar() {
           tharuka.me<span className="text-gray-500">/portfolio</span>
         </div>
 
+        <div className="hidden md:flex gap-10 text-xs tracking-widest text-gray-400">
+          <a href="#work" className="hover:text-white">01 WORK</a>
+          <a href="#skills" className="hover:text-white">02 SKILLS</a>
+          <a href="#education" className="hover:text-white">03 EDUCATION</a>
+          <a href="#writing" className="hover:text-white">04 WRITING</a>
+          <a href="#contact" className="hover:text-white">05 CONTACT</a>
+        </div>
+
       </div>
     </div>
   );
