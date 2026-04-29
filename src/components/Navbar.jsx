@@ -16,6 +16,11 @@ export default function Navbar() {
           <a href="#contact" className="hover:text-white">05 CONTACT</a>
         </div>
 
+        <div className="border border-purple-500 px-4 py-1 rounded-full text-xs text-purple-400 flex items-center gap-2">
+          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+          AVAILABLE FOR INTERNSHIPS
+        </div>
+
       </div>
     </div>
   );
