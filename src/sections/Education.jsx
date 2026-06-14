@@ -1,160 +1,111 @@
-// Commit 6 - Final Education section with animations and certifications
+// Education.jsx — polished, matches reference card layout
 import { motion } from "framer-motion";
+
+const certs = [
+  { title: "AWS Certified Cloud Practitioner",  org: "Amazon Web Services", year: "2024" },
+  { title: "Google Cybersecurity Professional",  org: "Coursera",            year: "2024" },
+  { title: "Meta Front-End Developer",           org: "Coursera",            year: "2023" },
+  { title: "Oracle Certified Java Associate",    org: "Oracle",              year: "2023" },
+];
 
 export default function Education() {
   return (
-    <section id="education" className="px-20 py-32 bg-[#0b0613] text-white">
+    <section id="education" className="bg-[#0b0b0f] text-white px-20 py-32">
 
+      {/* Header */}
       <div className="mb-20">
-
-        <p className="text-xs tracking-widest text-gray-500 mb-6">
+        <p className="text-[11px] tracking-[0.2em] text-gray-600 mb-6 font-mono">
           S03 — EDUCATION & GROWTH
         </p>
-
-        <h2 className="text-6xl md:text-7xl font-serif leading-tight">
+        <h2 className="text-6xl xl:text-7xl font-serif leading-[1.05]">
           Still in school.
           <br />
-          <span className="italic text-gray-300">Always in school.</span>
+          <span className="italic text-gray-500">Always in school.</span>
         </h2>
-
       </div>
 
-      <div className="grid md:grid-cols-2 gap-16">
+      <div className="grid md:grid-cols-2 gap-16 items-start">
 
+        {/* ── Degree card ── */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="
-            border border-gray-700 rounded-xl p-10 
-            bg-[#120a1c]
-            hover:shadow-[0_0_50px_rgba(168,85,247,0.15)]
-            transition
-          "
+          className="border border-gray-800 rounded-xl p-10 bg-[#0f0a1a] hover:border-purple-900/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.07)] transition-all duration-500"
         >
-
           <div className="relative pl-8">
+            {/* Timeline spine */}
+            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gray-800" />
 
-            <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gray-800"></div>
-
+            {/* Degree 1 */}
             <div className="relative mb-12">
-
-              <div className="flex justify-between items-start mb-2">
-                <p className="text-xs text-gray-400 tracking-widest">
-                  2023 — PRESENT
-                </p>
-
-                <p className="text-2xl text-purple-400 font-serif">
-                  3.8<span className="text-gray-400 text-sm">/4.0</span>
-                </p>
+              <div className="absolute -left-[22px] top-[6px] w-2.5 h-2.5 rounded-full bg-purple-500 ring-4 ring-purple-500/20" />
+              <div className="flex justify-between items-start mb-3">
+                <p className="text-[10px] tracking-widest text-gray-600 font-mono">2023 — PRESENT</p>
+                <span className="text-lg text-purple-400 font-serif">
+                  3.8<span className="text-gray-600 text-xs">/4.0</span>
+                </span>
               </div>
-
-              <h2 className="text-3xl font-serif">
-                Sabaragamuwa University
-              </h2>
-
-              <p className="text-gray-400 mt-2">
-                BSc (Hons) in Software Engineering
-              </p>
-
-              <p className="text-gray-500 mt-3 text-sm max-w-xl">
-                Focused on software engineering principles, data structures,
+              <h3 className="text-2xl font-serif">Sabaragamuwa University</h3>
+              <p className="text-gray-400 mt-1 text-sm">BSc (Hons) in Software Engineering</p>
+              <p className="text-gray-600 mt-3 text-sm leading-relaxed">
+                Software engineering principles, data structures,
                 distributed systems, and real-world application development.
               </p>
-
             </div>
 
+            {/* Degree 2 */}
             <div className="relative">
-
-              <p className="text-xs text-gray-400 tracking-widest mb-2">
-                2019 — 2022
+              <div className="absolute -left-[22px] top-[6px] w-2.5 h-2.5 rounded-full bg-gray-700 ring-4 ring-gray-700/20" />
+              <p className="text-[10px] tracking-widest text-gray-600 font-mono mb-3">2019 — 2022</p>
+              <h3 className="text-2xl font-serif">Advanced Level (A/L)</h3>
+              <p className="text-gray-400 mt-1 text-sm">Physical Science Stream</p>
+              <p className="text-gray-600 mt-3 text-sm leading-relaxed">
+                Mathematics, Physics, Chemistry — the analytical
+                foundation everything else runs on.
               </p>
-
-              <h3 className="text-2xl font-serif">
-                Advanced Level (A/L)
-              </h3>
-
-              <p className="text-gray-400 mt-2">
-                Physical Science Stream
-              </p>
-
-              <p className="text-gray-500 mt-3 text-sm max-w-xl">
-                Studied Mathematics, Physics, and Chemistry with strong analytical
-                and problem-solving foundation.
-              </p>
-
             </div>
-
           </div>
         </motion.div>
 
+        {/* ── Certifications ── */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           viewport={{ once: true }}
         >
-
-          <p className="text-xs text-gray-500 tracking-widest mb-4">
+          <p className="text-[10px] tracking-[0.2em] text-gray-600 mb-5 font-mono">
             CONTINUOUS LEARNING
           </p>
+          <h3 className="text-4xl font-serif mb-10 leading-snug">
+            Certifications
+            <br />
+            <span className="text-gray-500 italic">& deep-dives</span>
+          </h3>
 
-          <h2 className="text-4xl font-serif mb-10">
-            Certifications <br /> & deep-dives
-          </h2>
-
-          <div className="space-y-8">
-
-            <CertItem
-              title="AWS Certified Cloud Practitioner"
-              org="Amazon Web Services"
-              year="2024"
-            />
-
-            <CertItem
-              title="Google Cybersecurity Professional"
-              org="Coursera"
-              year="2024"
-            />
-
-            <CertItem
-              title="Meta Front-End Developer"
-              org="Coursera"
-              year="2023"
-            />
-
-            <CertItem
-              title="Oracle Certified Java Associate"
-              org="Oracle"
-              year="2023"
-            />
-
-          </div>
-
+          {certs.map((cert, i) => (
+            <div
+              key={i}
+              className="border-b border-gray-800 py-5 flex justify-between items-start group hover:border-purple-900/60 transition-colors duration-200"
+            >
+              <div>
+                <p className="text-[15px] group-hover:text-purple-400 transition-colors duration-200">
+                  {cert.title}
+                </p>
+                <p className="text-[11px] text-gray-600 mt-1 tracking-widest font-mono uppercase">
+                  {cert.org}
+                </p>
+              </div>
+              <span className="text-xs text-gray-600 font-mono flex-shrink-0 ml-6 mt-0.5">
+                {cert.year}
+              </span>
+            </div>
+          ))}
         </motion.div>
 
       </div>
     </section>
-  );
-}
-
-function CertItem({ title, org, year }) {
-  return (
-    <div className="border-b border-gray-800 pb-6 flex justify-between items-start group">
-
-      <div>
-        <p className="text-lg group-hover:text-purple-400 transition">
-          {title}
-        </p>
-
-        <p className="text-xs text-gray-500 mt-1 uppercase tracking-wide">
-          {org}
-        </p>
-      </div>
-
-      <span className="text-sm text-gray-500">{year}</span>
-
-    </div>
   );
 }

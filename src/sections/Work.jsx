@@ -1,33 +1,32 @@
+// Work.jsx — improved with proper section wrapper and spacing
 import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 
 export default function Work() {
   return (
-    <section id="work" className="px-20 py-32">
+    <section id="work" className="bg-[#0b0b0f] text-white px-20 py-32">
 
-      {/* HEADER */}
-      <div className="text-center mb-20">
-        <span className="text-xs border px-4 py-1 rounded-full border-purple-500 text-purple-400">
+      {/* Header */}
+      <div className="text-center mb-24">
+        <span className="text-[11px] border border-purple-500/60 bg-purple-500/10 px-4 py-1.5 rounded-full text-purple-400 tracking-widest">
           S01 — SELECTED WORK
         </span>
-
-        <h2 className="text-6xl font-serif mt-8">
+        <h2 className="text-6xl font-serif mt-10 leading-tight">
           Three projects.
           <br />
-          <span className="text-purple-500 italic">
-            A thousand commits.
-          </span>
+          <span className="text-purple-400 italic">A thousand commits.</span>
         </h2>
       </div>
 
-      {/* PROJECT LIST */}
-      <div className="space-y-16">
+      {/* Project rows — each separated by a subtle divider */}
+      <div className="space-y-4">
         {projects.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            index={index}
-          />
+          <div key={project.id}>
+            <ProjectCard project={project} index={index} />
+            {index < projects.length - 1 && (
+              <div className="border-t border-gray-800/50 mt-4" />
+            )}
+          </div>
         ))}
       </div>
 

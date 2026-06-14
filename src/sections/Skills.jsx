@@ -1,106 +1,126 @@
-// Commit 6 - Final Skills section with Stats and animated progress bars
+// Skills.jsx — fixed: headline on ONE line, proper column spacing, no progress bars
 import { motion } from "framer-motion";
-import Stats from "../components/Stats";
+
+const skillColumns = [
+  {
+    title: "LANGUAGES",
+    items: [
+      { name: "Java",       detail: "Spring / Maven" },
+      { name: "Python",     detail: "FastAPI / NumPy" },
+      { name: "TypeScript", detail: "React / Next.js"  },
+      { name: "C / C++",   detail: "Systems / DSA"    },
+      { name: "Go",         detail: "CLI / Services"   },
+      { name: "SQL",        detail: "Postgres / MySQL" },
+    ],
+  },
+  {
+    title: "FRAMEWORKS",
+    items: [
+      { name: "Spring Boot", detail: "REST · JPA"       },
+      { name: "React",       detail: "Hooks · Router"   },
+      { name: "Next.js",     detail: "SSR · Edge"       },
+      { name: "FastAPI",     detail: "Async · Pydantic" },
+      { name: "Node.js",     detail: "Express · WS"     },
+      { name: "Tailwind",    detail: "CSS · Animate"    },
+    ],
+  },
+  {
+    title: "TOOLS & INFRA",
+    items: [
+      { name: "Git & GitHub Actions", detail: "CI / CD"        },
+      { name: "Docker",               detail: "Compose · Hub"  },
+      { name: "AWS",                  detail: "EC2 · S3 · λ"   },
+      { name: "PostgreSQL",           detail: "Indexes · RLS"  },
+      { name: "Redis",                detail: "Cache · Pub/Sub" },
+      { name: "Jira & Linear",        detail: "Agile · Sprints" },
+    ],
+  },
+];
+
+const stats = [
+  { label: "REPOS",        value: "47"    },
+  { label: "COMMITS / YR", value: "1,284" },
+  { label: "PRS MERGED",   value: "112"   },
+  { label: "CUPS OF ☕",    value: "∞"     },
+];
 
 export default function Skills() {
   return (
     <section id="skills" className="bg-[#f5f5f7] text-black px-20 py-32">
 
-      <div className="mb-20">
-        <span className="text-xs tracking-widest text-gray-500">
+      {/* ── Header ── */}
+      <div className="mb-16">
+        <p className="text-[11px] tracking-[0.2em] text-gray-400 mb-5 font-mono">
           S02 — THE TOOLBOX
-        </span>
-
-        <h2 className="text-6xl font-serif mt-6 leading-tight">
-          I'm <span className="text-purple-500 italic">fluent</span> in the boring parts —
+        </p>
+        {/* Single-line headline — reference keeps it on 2 lines max */}
+        <h2 className="text-5xl xl:text-6xl font-serif leading-[1.1] max-w-3xl">
+          I'm{" "}
+          <span className="text-purple-500 italic">fluent</span>{" "}
+          in the boring parts —
           <br />
           the parts that ship.
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 border-t border-gray-300 pt-10">
-
-        <SkillColumn
-          title="LANGUAGES"
-          items={["Java", "Python", "TypeScript", "C / C++", "Go", "SQL"]}
-        />
-
-        <SkillColumn
-          title="FRAMEWORKS"
-          items={["Spring Boot", "React / Next.js", "FastAPI", "Node.js"]}
-        />
-
-        <SkillColumn
-          title="TOOLS & INFRA"
-          items={[
-            "Git & GitHub Actions",
-            "Docker",
-            "Kubernetes",
-            "AWS (EC2, S3, Lambda)",
-            "PostgreSQL / Redis",
-            "Jira & Linear",
-          ]}
-        />
-
-      </div>
-
-      <Stats />
-    </section>
-  );
-}
-
-function SkillColumn({ title, items }) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: 0.2,
-          },
-        },
-      }}
-    >
-      <h3 className="text-xs tracking-widest text-gray-500 mb-6">
-        {title}
-      </h3>
-
-      <div className="space-y-6">
-        {items.map((item, index) => (
+      {/* ── Three columns ── */}
+      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-gray-300">
+        {skillColumns.map((col, ci) => (
           <motion.div
-            key={index}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
+            key={col.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: ci * 0.1 }}
+            viewport={{ once: true }}
+            className={[
+              "pt-10 pb-4",
+              ci > 0 ? "md:pl-10" : "",
+              ci < 2 ? "md:pr-10 md:border-r border-gray-300" : "",
+            ].join(" ")}
           >
-            <div className="flex justify-between items-center">
-              <span className="text-xl font-serif">{item}</span>
-              <span className="text-xs text-gray-400">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            </div>
+            <h3 className="text-[10px] tracking-[0.2em] text-gray-400 mb-6 font-mono">
+              {col.title}
+            </h3>
 
-            <div className="mt-2 h-[2px] bg-gray-300 relative overflow-hidden">
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{
-                  duration: 1,
-                  delay: index * 0.2,
-                }}
-                className="absolute left-0 top-0 h-full bg-purple-500 origin-left"
-                style={{
-                  width: `${70 + index * 5}%`,
-                }}
-              />
-            </div>
+            {col.items.map((item, i) => (
+              <div
+                key={i}
+                className="flex justify-between items-baseline py-[14px] border-b border-gray-200 group"
+              >
+                <span className="text-[17px] font-serif group-hover:text-purple-600 transition-colors duration-150">
+                  {item.name}
+                </span>
+                <span className="text-[11px] text-gray-400 font-mono ml-4 flex-shrink-0">
+                  {item.detail}
+                </span>
+              </div>
+            ))}
           </motion.div>
         ))}
       </div>
-    </motion.div>
+
+      {/* ── Stats strip ── */}
+      <div className="mt-0 border-t border-gray-300 grid grid-cols-2 md:grid-cols-4">
+        {stats.map((stat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: i * 0.08 }}
+            viewport={{ once: true }}
+            className={[
+              "py-10 text-center",
+              i < 3 ? "border-r border-gray-300" : "",
+            ].join(" ")}
+          >
+            <p className="text-[10px] tracking-[0.2em] text-gray-400 mb-3 font-mono">
+              {stat.label}
+            </p>
+            <p className="text-5xl font-serif">{stat.value}</p>
+          </motion.div>
+        ))}
+      </div>
+
+    </section>
   );
 }
