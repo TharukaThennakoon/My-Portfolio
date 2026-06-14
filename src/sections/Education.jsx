@@ -1,111 +1,142 @@
-// Education.jsx — polished, matches reference card layout
 import { motion } from "framer-motion";
+import courses from "../data/courses";
+import TechIcon from "../components/TechIcon";
 
-const certs = [
-  { title: "AWS Certified Cloud Practitioner",  org: "Amazon Web Services", year: "2024" },
-  { title: "Google Cybersecurity Professional",  org: "Coursera",            year: "2024" },
-  { title: "Meta Front-End Developer",           org: "Coursera",            year: "2023" },
-  { title: "Oracle Certified Java Associate",    org: "Oracle",              year: "2023" },
-];
+const PROVIDER_ICONS = {
+  aws:    "aws",
+  google: "google",
+  meta:   "meta",
+  oracle: "oracle",
+  udemy:  "udemy",
+};
 
 export default function Education() {
   return (
-    <section id="education" className="bg-[#0b0b0f] text-white px-20 py-32">
+    <section id="education" className="relative overflow-hidden section-dark">
+      <div className="absolute inset-0 pointer-events-none mesh-dark" />
 
-      {/* Header */}
-      <div className="mb-20">
-        <p className="text-[11px] tracking-[0.2em] text-gray-600 mb-6 font-mono">
-          S03 — EDUCATION & GROWTH
-        </p>
-        <h2 className="text-6xl xl:text-7xl font-serif leading-[1.05]">
-          Still in school.
-          <br />
-          <span className="italic text-gray-500">Always in school.</span>
-        </h2>
-      </div>
+      <div className="relative z-10 section-container">
+        <div className="mb-16">
+          <p className="text-[11px] tracking-[0.2em] text-gray-600 mb-6 font-mono">S03 — EDUCATION & GROWTH</p>
+          <h2 className="section-title">
+            Still in school.
+            <br />
+            <span className="italic text-gray-500">Always at school.</span>
+          </h2>
+        </div>
 
-      <div className="grid md:grid-cols-2 gap-16 items-start">
-
-        {/* ── Degree card ── */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="border border-gray-800 rounded-xl p-10 bg-[#0f0a1a] hover:border-purple-900/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.07)] transition-all duration-500"
+          className="p-10 mb-16 transition-all duration-500 glass-card rounded-2xl md:p-14 hover:border-purple-800/40"
         >
-          <div className="relative pl-8">
-            {/* Timeline spine */}
-            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gray-800" />
-
-            {/* Degree 1 */}
-            <div className="relative mb-12">
-              <div className="absolute -left-[22px] top-[6px] w-2.5 h-2.5 rounded-full bg-purple-500 ring-4 ring-purple-500/20" />
-              <div className="flex justify-between items-start mb-3">
-                <p className="text-[10px] tracking-widest text-gray-600 font-mono">2023 — PRESENT</p>
-                <span className="text-lg text-purple-400 font-serif">
-                  3.8<span className="text-gray-600 text-xs">/4.0</span>
-                </span>
-              </div>
-              <h3 className="text-2xl font-serif">Sabaragamuwa University</h3>
-              <p className="text-gray-400 mt-1 text-sm">BSc (Hons) in Software Engineering</p>
-              <p className="text-gray-600 mt-3 text-sm leading-relaxed">
-                Software engineering principles, data structures,
-                distributed systems, and real-world application development.
+          <div className="grid gap-12 md:grid-cols-2">
+            <div>
+              <p className="text-[10px] tracking-widest text-gray-600 font-mono mb-3">2023 — PRESENT</p>
+              <h3 className="font-serif text-2xl">Sabaragamuwa University of Sri Lanka</h3>
+              <p className="mt-1 text-sm text-purple-400">BSc (Hons) in Software Engineering</p>
+              <p className="mt-4 text-sm leading-relaxed text-gray-500">
+                Distributed systems, data structures, software architecture, OOP,
+                and building software that survives real-world use.
               </p>
             </div>
+            <div>
+  <p className="text-[10px] tracking-widest text-gray-600 font-mono mb-3">
+    A/L
+  </p>
 
-            {/* Degree 2 */}
-            <div className="relative">
-              <div className="absolute -left-[22px] top-[6px] w-2.5 h-2.5 rounded-full bg-gray-700 ring-4 ring-gray-700/20" />
-              <p className="text-[10px] tracking-widest text-gray-600 font-mono mb-3">2019 — 2022</p>
-              <h3 className="text-2xl font-serif">Advanced Level (A/L)</h3>
-              <p className="text-gray-400 mt-1 text-sm">Physical Science Stream</p>
-              <p className="text-gray-600 mt-3 text-sm leading-relaxed">
-                Mathematics, Physics, Chemistry — the analytical
-                foundation everything else runs on.
-              </p>
-            </div>
+  <h3 className="font-serif text-2xl">
+    G.C.E. Advanced Level – Physical Science Stream
+  </h3>
+
+  <p className="mt-1 text-sm text-purple-400">
+    Pinnawala Central College, Rambukkana · 2021
+  </p>
+
+  <ul className="mt-4 space-y-2 text-sm text-gray-500">
+    <li>• Studied in the Physical Science stream</li>
+    <li>• Achieved B grades in Combined Mathematics, Physics, and Chemistry</li>
+    <li>• Strengthened analytical and problem-solving skills through science education</li>
+  </ul>
+</div>
           </div>
         </motion.div>
 
-        {/* ── Certifications ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-[10px] tracking-[0.2em] text-gray-600 mb-5 font-mono">
-            CONTINUOUS LEARNING
-          </p>
-          <h3 className="text-4xl font-serif mb-10 leading-snug">
-            Certifications
-            <br />
-            <span className="text-gray-500 italic">& deep-dives</span>
-          </h3>
-
-          {certs.map((cert, i) => (
-            <div
-              key={i}
-              className="border-b border-gray-800 py-5 flex justify-between items-start group hover:border-purple-900/60 transition-colors duration-200"
-            >
-              <div>
-                <p className="text-[15px] group-hover:text-purple-400 transition-colors duration-200">
-                  {cert.title}
-                </p>
-                <p className="text-[11px] text-gray-600 mt-1 tracking-widest font-mono uppercase">
-                  {cert.org}
-                </p>
-              </div>
-              <span className="text-xs text-gray-600 font-mono flex-shrink-0 ml-6 mt-0.5">
-                {cert.year}
-              </span>
+        {/* Completed courses & certifications */}
+        <div>
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-[10px] tracking-[0.2em] text-gray-600 font-mono mb-2">CONTINUOUS LEARNING</p>
+              <h3 className="font-serif text-3xl">
+                Completed <span className="italic text-purple-400">courses</span>
+              </h3>
             </div>
-          ))}
-        </motion.div>
+            <span className="text-[11px] font-mono text-gray-600 tracking-widest">
+              {courses.length} CERTIFICATIONS & COURSES
+            </span>
+          </div>
 
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {courses.map((course, i) => (
+              <motion.div
+                key={course.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                viewport={{ once: true }}
+                className="p-5 transition-all duration-300 glass-card group rounded-xl hover:border-purple-500/30"
+              >
+                <div className="flex items-start gap-4">
+                  <CourseIcon icon={course.icon} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-[9px] tracking-widest font-mono text-purple-400/80 border border-purple-500/25 px-2 py-0.5 rounded">
+                        {course.type.toUpperCase()}
+                      </span>
+                      <span className="text-[9px] font-mono text-gray-600">{course.year}</span>
+                    </div>
+                    <h4 className="text-[15px] font-serif text-gray-100 leading-snug group-hover:text-purple-200 transition-colors">
+                      {course.title}
+                    </h4>
+                    <p className="text-[11px] text-gray-500 mt-1.5 font-mono tracking-wide">{course.provider}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function CourseIcon({ icon }) {
+  const slug = PROVIDER_ICONS[icon];
+  if (slug && slug !== "google" && slug !== "meta" && slug !== "oracle" && slug !== "udemy") {
+    return <TechIcon icon={slug} size={20} />;
+  }
+
+  const custom = {
+    google: { slug: "google", color: "4285F4" },
+    meta:   { slug: "meta",   color: "0668E1" },
+    oracle: { slug: "oracle", color: "F80000" },
+    udemy:  { slug: "udemy",  color: "A435F0" },
+  }[icon];
+
+  if (!custom) return <TechIcon icon="git" size={20} />;
+
+  return (
+    <span className="inline-flex items-center justify-center flex-shrink-0 bg-white rounded-lg shadow-sm ring-1 ring-black/5"
+          style={{ width: 32, height: 32 }}>
+      <img
+        src={`https://cdn.simpleicons.org/${custom.slug}/${custom.color}`}
+        alt=""
+        width={20}
+        height={20}
+        loading="lazy"
+      />
+    </span>
   );
 }
